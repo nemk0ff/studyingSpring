@@ -16,7 +16,8 @@
     </bean>
 
     <bean id="musicPlayer"
-        class="ru.nemkoff.springCourse.MusicPlayer">
+        class="ru.nemkoff.springCourse.MusicPlayer"
+          scope="prototype">
         <property name="musicList">
         <list>
             <ref bean="popMusicBean" />
