@@ -2,33 +2,33 @@ package ru.nemkoff.springCourse;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MusicPlayer {
-  private List<Music> musicList = new ArrayList<>();
+  private Music music1;
+  private Music music2;
+
+  @Value("${musicPlayer.name}")
   private String name;
+  @Value("${musicPlayer.volume}")
   private int volume;
 
-  public MusicPlayer(List<Music> music) {
-    this.musicList = music;
+  @Autowired
+  public MusicPlayer(@Qualifier("classicalMusic") Music music1,
+                     @Qualifier("rockMusic") Music music2) {
+    this.music1 = music1;
+    this.music2 = music2;
   }
 
   public MusicPlayer() {
   }
 
-  public void doMyInit() {
-    System.out.println("Doing my initialization");
-  }
-
-  public void doMyDestroy() {
-    System.out.println("Doing my destroy");
-  }
-
   public void playMusic() {
-    musicList.forEach(music -> System.out.println("Playing: " + music.getSong() + "..."));
-  }
 
-  public void setMusicList(List<Music> music) {
-    this.musicList = music;
   }
 
   public int getVolume() {
@@ -45,5 +45,15 @@ public class MusicPlayer {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  @Override
+  public String toString() {
+    return "MusicPlayer{" +
+        "music1=" + music1 +
+        ", music2=" + music2 +
+        ", name='" + name + '\'' +
+        ", volume=" + volume +
+        '}';
   }
 }

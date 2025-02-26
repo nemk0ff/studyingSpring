@@ -1,15 +1,11 @@
 package ru.nemkoff.springCourse;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ClassicalMusic implements Music {
   @Override
   public String getSong() {
     return "Rhapsody Levitan";
-  }
-  public void doMyInit() {
-    System.out.println("Doing my initialization");
-  }
-
-  public void doMyDestroy() {
-    System.out.println("Doing my destroy");
   }
 }
