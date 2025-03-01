@@ -27,6 +27,6 @@ public class TestSpring {
     System.out.println(firstMusicPlayer.getVolume());
     System.out.println(secondMusicPlayer.getVolume());
     context.close();
-    // Now i use my own ssh for projects
+    // email is changed
   }
 }
